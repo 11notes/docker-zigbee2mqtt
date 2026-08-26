@@ -1,0 +1,24 @@
+{
+  "image": "11notes/zigbee2mqtt",
+  "platform": "amd64,arm64",
+  "name": "zigbee2mqtt",
+  "root": "/zigbee2mqtt",
+  "semver": {
+    "version": "2.13.0"
+  },
+  "readme": {
+    "description": "run zigbee2mqtt rootless and distroless.",
+    "introduction": "[Zigbee2MQTT](https://github.com/koenkk/zigbee2mqtt) (created by [koenkk](https://github.com/koenkk)) allows you to use your Zigbee devices without the vendor's bridge or gateway. It bridges events and allows you to control your Zigbee devices via MQTT. In this way you can integrate your Zigbee devices with whatever smart home infrastructure you are using.",
+    "built": {
+      "zigbee2mqtt": "https://github.com/laurent22/zigbee2mqtt"
+    },
+    "distroless": {
+      "layers": [
+        "11notes/distroless:localhealth"
+      ]
+    },
+    "comparison": {
+      "image": "koenkk/zigbee2mqtt"
+    }
+  }
+}

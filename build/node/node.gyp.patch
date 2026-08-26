@@ -1,0 +1,41 @@
+diff --git a/node.gyp b/node.gyp
+index bd66c9b..c29a1f5 100644
+--- a/node.gyp
++++ b/node.gyp
+@@ -569,6 +569,15 @@
+         'NODE_ARCH="<(target_arch)"',
+         'NODE_PLATFORM="<(OS)"',
+         'NODE_WANT_INTERNALS=1',
++        'NODE_ADDON_API_ENABLE_CPP_EXCEPTIONS',
++      ],
++
++      'cflags_cc!': [
++        '-fno-exceptions'
++      ],
++
++      'cflags_cc': [
++        '-fexceptions'
+       ],
+
+       'includes': [
+@@ -578,11 +587,18 @@
+       'include_dirs': [
+         'src',
+         'deps/v8/include',
+-        'deps/postject'
++        'deps/postject',
++        'src/serialport_bindings/src',
++        'node_modules/node-addon-api',
++        'deps/node-addon-api',
+       ],
+
+       'sources': [
+-        'src/node_main.cc'
++        'src/node_main.cc',
++        'src/serialport_bindings/src/serialport.cpp',
++        'src/serialport_bindings/src/serialport_linux.cpp',
++        'src/serialport_bindings/src/serialport_unix.cpp',
++        'src/serialport_bindings/src/poller.cpp',
+       ],
+
+       'dependencies': [
