@@ -9,7 +9,7 @@ x-lockdown: &lockdown
 
 services:
   zigbee2mqtt:
-    image: "11notes/zigbee2mqtt:2.13.0"
+    image: "11notes/zigbee2mqtt:2.14.0"
     <<: *lockdown
     environment:
       TZ: "Europe/Zurich"
