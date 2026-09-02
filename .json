@@ -4,7 +4,7 @@
   "name": "zigbee2mqtt",
   "root": "/zigbee2mqtt",
   "semver": {
-    "version": "2.13.0"
+    "version": "2.14.0"
   },
   "readme": {
     "description": "run zigbee2mqtt rootless and distroless.",
