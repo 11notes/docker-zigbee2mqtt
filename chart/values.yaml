@@ -1,0 +1,59 @@
+image:
+  repository: 11notes/zigbee2mqtt
+  tag: ""
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+nameOverride: ""
+fullnameOverride: ""
+timezone: "Europe/Zurich"
+
+extraEnv: []
+
+service:
+  type: ClusterIP
+  port: 8080
+  annotations: {}
+
+containerSecurityContext:
+  runAsUser: 1000
+  runAsGroup: 1000
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+
+resources: {}
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+podAnnotations: {}
+podLabels: {}
+
+persistence:
+  etc:
+    enabled: true
+    existingClaim: ""
+    storageClass: ""
+    accessModes:
+      - ReadWriteOnce
+    size: 64Mi
+
+readinessProbe:
+  exec:
+    command:
+      - localhealth
+      - http://127.0.0.1:8080/
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+
+livenessProbe:
+  exec:
+    command:
+      - localhealth
+      - http://127.0.0.1:8080/
+  initialDelaySeconds: 60
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
