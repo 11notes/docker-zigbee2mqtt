@@ -113,13 +113,13 @@
 
   RUN set -ex; \
     cd ${BUILD_ROOT}; \
+    SERIALPORT_BINDINGS=$(find ./ -name serialport-bindings.js); \
     printf '%s\n' \
       "\"use strict\";" \
       "Object.defineProperty(exports, \"__esModule\", { value: true });" \
       "exports.binding = void 0;" \
       "exports.binding = process._linkedBinding('serialport_bindings');" \
-      > ./node_modules/.pnpm/@serialport+bindings-cpp@13.0.1/node_modules/@serialport/bindings-cpp/dist/serialport-bindings.js; \
-    cat ./node_modules/.pnpm/@serialport+bindings-cpp@13.0.1/node_modules/@serialport/bindings-cpp/dist/serialport-bindings.js;
+      > ${SERIALPORT_BINDINGS};
 
 # :: ZIGBEE2MQTT DIST
   FROM build AS dist
