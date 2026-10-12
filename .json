@@ -20,5 +20,7 @@
     "comparison": {
       "image": "koenkk/zigbee2mqtt"
     }
-  }
+  },
+  "unraid": true,
+  "nobody": true
 }
