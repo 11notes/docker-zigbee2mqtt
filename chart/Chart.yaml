@@ -2,8 +2,8 @@ apiVersion: v2
 name: zigbee2mqtt
 description: run zigbee2mqtt rootless and distroless on k8s
 type: application
-version: 0.0.2
-appVersion: 2.14.1
+version: 1.0.0
+appVersion: 2.14.2
 home: https://github.com/11notes/docker-zigbee2mqtt
 sources:
   - https://github.com/11notes/docker-zigbee2mqtt

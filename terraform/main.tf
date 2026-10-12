@@ -46,12 +46,12 @@ resource "helm_release" "zigbee2mqtt" {
   repository = "oci://ghcr.io/11notes/charts"
   chart = "zigbee2mqtt"
   namespace = "zigbee2mqtt"
-  version = "0.0.2"
+  version = "1.0.0"
 }
 
 resource "kubernetes_secret_v1" "ingress_auth" {
   metadata {
-    name = "ingress-auth"
+    name = "zigbee2mqtt-ingress-auth"
     namespace = "traefik"
   }
 
@@ -67,7 +67,7 @@ resource "kubernetes_manifest" "ingress_auth" {
     apiVersion = "traefik.io/v1alpha1"
     kind = "Middleware"
     metadata = {
-      name = "ingress-auth"
+      name = "zigbee2mqtt-ingress-auth"
       namespace = "traefik"
     }
     spec = {
@@ -83,7 +83,8 @@ resource "kubernetes_ingress_v1" "ingress" {
     name = "ingress"
     namespace = "zigbee2mqtt"
     annotations = {
-      "traefik.ingress.kubernetes.io/router.middlewares" = "zigbee2mqtt-ingress-auth@kubernetescrd"
+      "cert-manager.io/cluster-issuer" = "letsencrypt-prod"
+      "traefik.ingress.kubernetes.io/router.middlewares" = "traefik-zigbee2mqtt-ingress-auth@kubernetescrd"
     }
   }
 
