@@ -53,7 +53,6 @@ livenessProbe:
     command:
       - localhealth
       - http://127.0.0.1:8080/
-  initialDelaySeconds: 60
   periodSeconds: 10
   timeoutSeconds: 5
   failureThreshold: 6
